@@ -1,6 +1,6 @@
 import 'package:advancedfluttercourse/core/routing/routes.dart';
-import 'package:advancedfluttercourse/features/login/ui/widgets/login_screen.dart';
-import 'package:advancedfluttercourse/features/onboarding/onboarding_screen.dart';
+import 'package:advancedfluttercourse/features/login/ui/login_screen.dart';
+import 'package:advancedfluttercourse/features/onboarding/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
