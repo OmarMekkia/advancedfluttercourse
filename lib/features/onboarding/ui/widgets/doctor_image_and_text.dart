@@ -1,5 +1,5 @@
-import 'package:advancedfluttercourse/core/theming/colors.dart';
-import 'package:advancedfluttercourse/core/theming/styles.dart';
+import 'package:advancedfluttercourse/core/theme/colors.dart';
+import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

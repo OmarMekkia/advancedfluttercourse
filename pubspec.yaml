@@ -63,7 +63,7 @@ dependencies:
   # For splash screen
   flutter_native_splash: ^2.4.6
 
-  # Runner to generate code
+  # Runner to run code generation tasks
   build_runner: ^2.6.0
 
   # An SVG rendering and widget library for Flutter, which allows painting

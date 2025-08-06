@@ -1,5 +1,5 @@
-import 'package:advancedfluttercourse/core/theming/colors.dart';
-import 'package:advancedfluttercourse/core/theming/styles.dart';
+import 'package:advancedfluttercourse/core/theme/colors.dart';
+import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,10 +13,13 @@ class AppTextFormField extends StatelessWidget {
   final Color? fillColor;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
+  final TextEditingController? controller;
+  final Function(String?) validator;
 
   const AppTextFormField({
     super.key,
     required this.hintText,
+    required this.validator,
     this.isObscureText,
     this.textInputStyle,
     this.hintStyle,
@@ -25,19 +28,23 @@ class AppTextFormField extends StatelessWidget {
     this.fillColor,
     this.enabledBorder,
     this.focusedBorder,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       enabled: true,
       obscureText: isObscureText ?? false,
       style: textInputStyle ?? TextStyles.font14DarkBlueMedium,
+      validator: (value) => validator(value),
 
       decoration: InputDecoration(
         filled: true,
         isDense: true,
         hintText: hintText,
+        suffixIcon: suffixIcon,
 
         hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
         fillColor: fillColor ?? ColorsManager.moreLighterGray,
@@ -68,7 +75,14 @@ class AppTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           borderSide: const BorderSide(color: ColorsManager.red, width: 1.3),
         ),
-        suffixIcon: suffixIcon,
+
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.r),
+          borderSide: const BorderSide(color: ColorsManager.red, width: 1.3),
+        ),
+        
+
+        
       ),
     );
   }

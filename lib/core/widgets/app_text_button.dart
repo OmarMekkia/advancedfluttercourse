@@ -1,4 +1,4 @@
-import 'package:advancedfluttercourse/core/theming/colors.dart';
+import 'package:advancedfluttercourse/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,17 +32,19 @@ class AppTextButton extends StatelessWidget {
       width: buttonWidth?.w ?? double.infinity,
       height: buttonHeight?.h ?? 50.h,
       child: TextButton(
-        style: TextButton.styleFrom (
+        style: TextButton.styleFrom(
           backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
           alignment: Alignment.center,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius?.r ?? 16.r),
           ),
-      
-          padding: EdgeInsets.symmetric(vertical: verticalPadding?.h ?? 12.h, horizontal: horizontalPadding?.w ?? 24.w),
-      
+
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding?.h ?? 12.h,
+            horizontal: horizontalPadding?.w ?? 24.w,
+          ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(buttonText, style: textStyle),
       ),
     );

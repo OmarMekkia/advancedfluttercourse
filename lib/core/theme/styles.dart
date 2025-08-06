@@ -1,5 +1,5 @@
-import 'package:advancedfluttercourse/core/theming/colors.dart';
-import 'package:advancedfluttercourse/core/theming/font_weight_helper.dart';
+import 'package:advancedfluttercourse/core/theme/colors.dart';
+import 'package:advancedfluttercourse/core/theme/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -77,5 +77,11 @@ class TextStyles {
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.gray,
+  );
+
+  static TextStyle font10DarkBlueRegular = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.darkBlue,
   );
 }

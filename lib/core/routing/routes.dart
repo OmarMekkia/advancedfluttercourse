@@ -4,5 +4,6 @@ class Routes {
   static const String profileScreen = '/profileScreen';
   static const String settingsScreen = '/settingsScreen';
   static const String notificationsScreen = '/notificationsScreen';
+  static const String homeScreen = '/homeScreen';
  
 }
