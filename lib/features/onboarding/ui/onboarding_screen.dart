@@ -1,4 +1,4 @@
-import 'package:advancedfluttercourse/core/theming/styles.dart';
+import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:advancedfluttercourse/features/onboarding/ui/widgets/doc_logo_and_name.dart';
 import 'package:advancedfluttercourse/features/onboarding/ui/widgets/doctor_image_and_text.dart';
 import 'package:advancedfluttercourse/features/onboarding/ui/widgets/get_started_button.dart';

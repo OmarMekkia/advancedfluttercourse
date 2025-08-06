@@ -1,23 +1,19 @@
 import 'package:advancedfluttercourse/core/helpers/spacing.dart';
-import 'package:advancedfluttercourse/core/theming/colors.dart';
-import 'package:advancedfluttercourse/core/theming/styles.dart';
+import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:advancedfluttercourse/core/widgets/app_text_button.dart';
-import 'package:advancedfluttercourse/core/widgets/app_text_form_field.dart';
+import 'package:advancedfluttercourse/features/login/data/models/login_request_body.dart';
+import 'package:advancedfluttercourse/features/login/logic/cubit/login_cubit.dart';
 import 'package:advancedfluttercourse/features/login/ui/widgets/already_have_an_account_text.dart';
+import 'package:advancedfluttercourse/features/login/ui/widgets/email_and_password.dart';
+import 'package:advancedfluttercourse/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:advancedfluttercourse/features/login/ui/widgets/terms_and_conditions_text.dart';
+import 'package:advancedfluttercourse/features/login/ui/widgets/welcome_back_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  bool isObscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,61 +26,39 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Welcome Back',
-                  style: TextStyles.font24BlueBold,
-                  textAlign: TextAlign.start,
-                ),
-                verticalSpacing(8),
-                Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: TextStyles.font14GrayRegular,
-                ),
+                WelcomeBackText(),
                 verticalSpacing(30),
-                Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      AppTextFormField(hintText: "Email"),
-                      verticalSpacing(20),
-                      AppTextFormField(
-                        hintText: "Password",
-                        isObscureText: isObscureText,
-                        suffixIcon: GestureDetector(
-                          onTap: () =>
-                              setState(() => isObscureText = !isObscureText),
-                          child: Icon(
-                            isObscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: ColorsManager.gray,
-                          ),
-                        ),
+                const EmailAndPassword(),
+
+                Column(
+                  children: [
+                    verticalSpacing(24),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyles.font13Blueregular,
                       ),
-                      verticalSpacing(24),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyles.font13Blueregular,
-                        ),
-                      ),
-                      verticalSpacing(40),
-                      SizedBox(
-                        width: double.infinity,
-                        child: AppTextButton(
-                          buttonText: 'Login',
-                          textStyle: TextStyles.font16WhiteMedium,
-                          onPressed: () {},
-                        ),
-                      ),
-                      verticalSpacing(16),
-                      TermsAndConditionsText(),
-                      verticalSpacing(60),
-                      AlreadyHaveAnAccountText(),
-                      verticalSpacing(40),
-                    ],
-                  ),
+                    ),
+                    verticalSpacing(40),
+
+                    AppTextButton(
+                      buttonWidth: double.infinity,
+                      buttonText: 'Login',
+                      textStyle: TextStyles.font16WhiteMedium,
+                      onPressed: () {
+                        validateThenDoLogin(context);
+                      },
+                    ),
+                    verticalSpacing(16),
+
+                    TermsAndConditionsText(),
+                    verticalSpacing(60),
+
+                    AlreadyHaveAnAccountText(),
+                    verticalSpacing(40),
+                    LoginBlocListener(),
+                  ],
                 ),
               ],
             ),
@@ -92,5 +66,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginState(
+        LoginRequestBody(
+          email: context.read<LoginCubit>().emailController.text,
+          password: context.read<LoginCubit>().passwordController.text,
+        ),
+      );
+
+    }
   }
 }
