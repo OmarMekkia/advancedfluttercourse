@@ -1,21 +1,9 @@
+import 'package:advancedfluttercourse/core/di/dependency_injection.dart';
+import 'package:advancedfluttercourse/core/routing/app_router.dart';
+import 'package:advancedfluttercourse/doc_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) { 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const Scaffold(),
-    );
-  }
+  setupGetIt();
+  runApp(DocApp(appRouter: AppRouter.router));
 }
