@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextButton extends StatelessWidget {
+  final bool haveBackground;
   final Color? backgroundColor;
   final double? verticalPadding;
   final double? horizontalPadding;
@@ -21,32 +22,40 @@ class AppTextButton extends StatelessWidget {
     this.borderRadius,
     this.buttonWidth,
     this.buttonHeight,
-    required this.textStyle,
     this.onPressed,
+    this.haveBackground = true,
+    required this.textStyle,
     required this.buttonText,
   });
 
   @override
   Widget build(BuildContext context) {
+    final btn = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: haveBackground
+            ? (backgroundColor ?? ColorsManager.mainBlue)
+            : null,
+        alignment: Alignment.center,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius?.r ?? 16.r),
+        ),
+
+        padding: EdgeInsets.symmetric(
+          vertical: verticalPadding?.h ?? 12.h,
+          horizontal: horizontalPadding?.w ?? 24.w,
+        ),
+      ),
+      onPressed: onPressed,
+      child: Text(buttonText, style: textStyle),
+    );
+    
+    if (!haveBackground) {
+      return btn;
+    }
     return SizedBox(
       width: buttonWidth?.w ?? double.infinity,
       height: buttonHeight?.h ?? 50.h,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
-          alignment: Alignment.center,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius?.r ?? 16.r),
-          ),
-
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding?.h ?? 12.h,
-            horizontal: horizontalPadding?.w ?? 24.w,
-          ),
-        ),
-        onPressed: onPressed,
-        child: Text(buttonText, style: textStyle),
-      ),
+      child: btn,
     );
   }
 }

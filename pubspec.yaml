@@ -72,6 +72,9 @@ dependencies:
   # for adapting screen and font size
   flutter_screenutil: ^5.9.3
 
+  # UI icons
+  fluentui_icons: ^1.0.0
+
 
 
 dev_dependencies:

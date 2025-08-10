@@ -10,15 +10,15 @@ class WelcomeBackText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        verticalSpacing(30),
+        verticalSpacing(35),
 
         Text(
           'Welcome Back',
-          style: TextStyles.font24BlueBold,
+          style: TextStyles.font32BlueBold,
           textAlign: TextAlign.start,
         ),
 
-        verticalSpacing(8),
+        verticalSpacing(20),
 
         Text(
           "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",

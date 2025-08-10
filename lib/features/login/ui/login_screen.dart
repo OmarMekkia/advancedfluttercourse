@@ -1,9 +1,8 @@
 import 'package:advancedfluttercourse/core/helpers/spacing.dart';
 import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:advancedfluttercourse/core/widgets/app_text_button.dart';
-import 'package:advancedfluttercourse/features/login/data/models/login_request_body.dart';
 import 'package:advancedfluttercourse/features/login/logic/cubit/login_cubit.dart';
-import 'package:advancedfluttercourse/features/login/ui/widgets/already_have_an_account_text.dart';
+import 'package:advancedfluttercourse/features/login/ui/widgets/dont_have_an_account.dart';
 import 'package:advancedfluttercourse/features/login/ui/widgets/email_and_password.dart';
 import 'package:advancedfluttercourse/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:advancedfluttercourse/features/login/ui/widgets/terms_and_conditions_text.dart';
@@ -27,12 +26,12 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 WelcomeBackText(),
-                verticalSpacing(30),
+                verticalSpacing(100),
                 const EmailAndPassword(),
 
                 Column(
                   children: [
-                    verticalSpacing(24),
+                    verticalSpacing(15),
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
@@ -40,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyles.font13Blueregular,
                       ),
                     ),
-                    verticalSpacing(40),
+                    verticalSpacing(45),
 
                     AppTextButton(
                       buttonWidth: double.infinity,
@@ -53,9 +52,9 @@ class LoginScreen extends StatelessWidget {
                     verticalSpacing(16),
 
                     TermsAndConditionsText(),
-                    verticalSpacing(60),
+                    verticalSpacing(70),
 
-                    AlreadyHaveAnAccountText(),
+                    DontHaveAnAccount(),
                     verticalSpacing(40),
                     LoginBlocListener(),
                   ],
@@ -70,13 +69,7 @@ class LoginScreen extends StatelessWidget {
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginState(
-        LoginRequestBody(
-          email: context.read<LoginCubit>().emailController.text,
-          password: context.read<LoginCubit>().passwordController.text,
-        ),
-      );
-
+      context.read<LoginCubit>().emitLoginState();
     }
   }
 }
