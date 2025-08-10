@@ -34,6 +34,9 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapUpOutside: (_) {FocusManager.instance.primaryFocus?.unfocus();},
+      keyboardType: TextInputType.text, // controls keyboard type
+
       controller: controller,
       enabled: true,
       obscureText: isObscureText ?? false,
@@ -80,9 +83,6 @@ class AppTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           borderSide: const BorderSide(color: ColorsManager.red, width: 1.3),
         ),
-        
-
-        
       ),
     );
   }

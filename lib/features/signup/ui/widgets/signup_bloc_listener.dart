@@ -1,18 +1,18 @@
 import 'package:advancedfluttercourse/core/routing/routes.dart';
 import 'package:advancedfluttercourse/core/theme/colors.dart';
 import 'package:advancedfluttercourse/core/theme/styles.dart';
-import 'package:advancedfluttercourse/features/login/logic/cubit/login_cubit.dart';
-import 'package:advancedfluttercourse/features/login/logic/cubit/login_state.dart';
+import 'package:advancedfluttercourse/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:advancedfluttercourse/features/signup/logic/cubit/signup_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class SignupBlocListener extends StatelessWidget {
+  const SignupBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<SignupCubit, SignupState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -48,8 +48,24 @@ class LoginBlocListener extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text('Error: $errorMessage', style: TextStyles.font14DarkBlueMedium),
-          icon: const Icon(Icons.error, color: ColorsManager.red),
+          backgroundColor: ColorsManager.white,
+          content: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Error:\n\n',
+                  style: TextStyles.font16WhiteMedium.copyWith(
+                    color: ColorsManager.red,
+                  ),
+                ),
+                TextSpan(
+                  text: errorMessage,
+                  style: TextStyles.font14DarkBlueMedium,
+                ),
+              ],
+            ),
+          ),
+          icon: const Icon(Icons.error, color: ColorsManager.red, size: 40),
           actions: [
             TextButton(
               onPressed: () => context.pop(),
