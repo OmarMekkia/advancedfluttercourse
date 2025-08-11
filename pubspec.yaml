@@ -74,6 +74,7 @@ dependencies:
 
   # UI icons
   fluentui_icons: ^1.0.0
+  firebase_core: ^4.0.0
 
 
 
