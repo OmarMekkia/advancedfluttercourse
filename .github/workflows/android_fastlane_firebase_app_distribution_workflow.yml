@@ -29,6 +29,9 @@ jobs:
           ruby-version: 3.3.0
           bundler-cache: true
           working-directory: android
+          
+      - name: Fetch Flutter dependencies
+        run: flutter pub get
 
       - name: Build and Distribute App
         working-directory: android
