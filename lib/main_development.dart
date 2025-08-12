@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async{
   setupGetIt();
-  // To fix texts being hidden in flutter_screenutil in release mode
+  // To fix texts being hidden in flutter_screenutil in release mode`
   await ScreenUtil.ensureScreenSize();
   runApp(DocApp(appRouter: AppRouter.router));
 }
