@@ -28,6 +28,7 @@ jobs:
         with:
           ruby-version: 3.3.0
           bundler-cache: true
+          working-directory: android
 
       - name: Build and Distribute App
         working-directory: android
