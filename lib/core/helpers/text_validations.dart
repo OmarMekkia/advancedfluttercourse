@@ -1,4 +1,4 @@
-import 'package:advancedfluttercourse/core/helpers/App_regex.dart';
+import 'package:advancedfluttercourse/core/helpers/app_regex.dart';
 
 class TextValidations {
   final String passwordText;
