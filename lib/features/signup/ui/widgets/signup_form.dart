@@ -1,9 +1,9 @@
-import 'package:advancedfluttercourse/core/helpers/App_regex.dart';
+import 'package:advancedfluttercourse/core/helpers/app_regex.dart';
 import 'package:advancedfluttercourse/core/helpers/spacing.dart';
 import 'package:advancedfluttercourse/core/helpers/text_validations.dart';
 import 'package:advancedfluttercourse/core/theme/colors.dart';
 import 'package:advancedfluttercourse/core/widgets/app_text_form_field.dart';
-import 'package:advancedfluttercourse/features/login/ui/widgets/password_validations.dart';
+import 'package:advancedfluttercourse/features/signup/ui/widgets/password_validations.dart';
 import 'package:advancedfluttercourse/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
