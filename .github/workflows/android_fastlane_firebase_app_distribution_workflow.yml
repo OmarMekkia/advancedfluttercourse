@@ -15,7 +15,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: 11
+          java-version: 17
           distribution: temurin
 
       - name: Install Flutter
@@ -29,7 +29,7 @@ jobs:
           ruby-version: 3.3.0
           bundler-cache: true
           working-directory: android
-          
+
       - name: Fetch Flutter dependencies
         run: flutter pub get
 
