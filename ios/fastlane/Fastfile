@@ -27,7 +27,7 @@ platform :ios do
       firebase_cli_token: ENV['FIREBASE_CLI_TOKEN'],
       ios_artifact_path: "../build/ios/ipa/Runner.ipa",
       testers: "maha.elshyal@icloud.com",
-      release_notes: "First Fastlane Firebase Distribution IPA"
+      release_notes: commit[:message]
       )
   end
 end
