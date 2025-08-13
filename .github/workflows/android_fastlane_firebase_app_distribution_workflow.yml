@@ -42,32 +42,33 @@ jobs:
           bundle exec fastlane android firebase_distribution_android
 
 
-  distribute_to_firebase_ios:
-   runs-on: macos-latest
-   steps:
-     - name: Check Out Repository Code
-       uses: actions/checkout@v4
-
-     - name: Install Flutter
-       uses: subosito/flutter-action@v2
-       with:
-        channel: stable
-
-     - name: Set up Ruby
-       uses: ruby/setup-ruby@v1
-       with:
-         ruby-version: 3.3.0
-         bundler-cache: true
-         working-directory: ios
-
-     - name: Install Fastlane Dependencies
-       working-directory: ios
-       run: bundle install
-
-     - name: Build & Deploy to TestFlight
-       working-directory: ios
-       env:
-          APP_ID: ${{ secrets.IOS_APP_ID }}
-       run: |
-         bundle exec fastlane ios firebase_distribution_ios
-
+# distribute_to_firebase_ios:
+#  runs-on: macos-latest
+#  steps:
+#    - name: Check Out Repository Code
+#      uses: actions/checkout@v4
+#
+#    - name: Install Flutter
+#      uses: subosito/flutter-action@v2
+#      with:
+#       channel: stable
+#
+#    - name: Set up Ruby
+#      uses: ruby/setup-ruby@v1
+#      with:
+#        ruby-version: 3.3.0
+#        bundler-cache: true
+#        working-directory: ios
+#
+#    - name: Install Fastlane Dependencies
+#      working-directory: ios
+#      run: bundle install
+#
+#    - name: Build & Deploy to TestFlight
+#      working-directory: ios
+#      env:
+#         APP_ID: 
+#      run: |
+#        bundle exec fastlane ios firebase_distribution_ios
+#
+#
