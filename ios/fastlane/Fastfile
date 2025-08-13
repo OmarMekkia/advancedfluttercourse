@@ -13,21 +13,25 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:android)
+default_platform(:ios)
 
-platform :android do
+platform :ios do
   desc "Lane for Android Firebase App Distribution"
-  lane :firebase_distribution_android do
+  lane :firebase_distribution_ios do
+    
   sh "flutter clean"
   sh "flutter pub get"
-  sh "flutter build apk --release  --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+  sh "flutter build ipa --release --target lib/main_production.dart --no-tree-shake-icons"
   firebase_app_distribution(
       app: ENV['APP_ID'],
       firebase_cli_token: ENV['FIREBASE_CLI_TOKEN'],
-      android_artifact_type: "APK",
-      android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-      testers: "omarmakkia5@gmail.com, mohamedmak20@gmail.com, omarmekkia10@gmail.com",
+      ios_artifact_path: "../build/ios/ipa/Runner.ipa",
+      testers: "maha.elshyal@icloud.com",
       release_notes: commit[:message]
       )
   end
 end
+    # add actions here: https://docs.fastlane.tools/actions
+
+
+
