@@ -22,7 +22,12 @@ class TextStyles {
     color: ColorsManager.black,
   );
 
-    static TextStyle font18DarkBlueBold = TextStyle(
+  static TextStyle font18WhiteMeduim = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.white,
+  );
+  static TextStyle font18DarkBlueBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkBlue,
@@ -79,13 +84,25 @@ class TextStyles {
     color: ColorsManager.gray,
   );
 
+  static TextStyle font12darkGrayRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.darkGray,
+  );
+
   static TextStyle font12GrayRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.gray,
   );
 
-   static TextStyle font11darkGrayRegular = TextStyle(
+  static TextStyle font12BlueRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlue,
+  );
+
+  static TextStyle font11darkGrayRegular = TextStyle(
     fontSize: 11.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.darkGray,
