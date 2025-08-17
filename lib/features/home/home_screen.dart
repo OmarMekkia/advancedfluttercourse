@@ -1,8 +1,11 @@
+import 'package:advancedfluttercourse/core/helpers/spacing.dart';
 import 'package:advancedfluttercourse/core/theme/colors.dart';
+import 'package:advancedfluttercourse/features/home/widgets/doctor_speciality_list_view.dart';
 import 'package:advancedfluttercourse/features/home/widgets/doctors_blue_container.dart';
+import 'package:advancedfluttercourse/features/home/widgets/doctors_list_view.dart';
 import 'package:advancedfluttercourse/features/home/widgets/home_top_bar.dart';
+import 'package:advancedfluttercourse/features/home/widgets/title_see_all.dart';
 import 'package:flutter/material.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,14 +17,21 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
-          child: SingleChildScrollView(
+          child: Padding(
             padding: EdgeInsets.fromLTRB(20, 16, 20, 28),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               const HomeTopBar(),
-               const DoctorsBlueContainer(),
-                
+                const HomeTopBar(),
+                const DoctorsBlueContainer(),
+                verticalSpacing(24),
+                TitleSeeAll(title: "Doctor Speciality", seeAllonPressed: () {}),
+                verticalSpacing(18),
+
+                const DoctorSpecialityListView(),
+                verticalSpacing(8),
+
+                const DoctorsListView(),
               ],
             ),
           ),

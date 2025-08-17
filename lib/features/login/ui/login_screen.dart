@@ -1,4 +1,5 @@
 import 'package:advancedfluttercourse/core/helpers/spacing.dart';
+import 'package:advancedfluttercourse/core/routing/routes.dart';
 import 'package:advancedfluttercourse/core/theme/styles.dart';
 import 'package:advancedfluttercourse/core/widgets/app_text_button.dart';
 import 'package:advancedfluttercourse/features/login/logic/cubit/login_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:advancedfluttercourse/features/login/ui/widgets/welcome_back_tex
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -46,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                       buttonText: 'Login',
                       textStyle: TextStyles.font16WhiteMedium,
                       onPressed: () {
-                        validateThenDoLogin(context);
+                        context.go(Routes.homeScreen);
                       },
                     ),
                     verticalSpacing(16),
